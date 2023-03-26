@@ -18,7 +18,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var quiz = new QuizViewModel();
+        quiz.Perguntas = _quizRepository.ObterPerguntas();
+        return View(quiz);
     }
 
     public IActionResult Privacy()
