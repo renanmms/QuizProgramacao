@@ -11,6 +11,7 @@ namespace Quiz_Programacao.Persistence.Repositories
 
         public QuizRepository(IConfiguration configuration)
         {
+            _configuration = configuration;
             connectionString = _configuration.GetConnectionString("QuizProgramacao");
         }
 
