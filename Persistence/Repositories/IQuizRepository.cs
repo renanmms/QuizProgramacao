@@ -1,10 +1,9 @@
-using System;
-using Quiz_Programacao.Entities;
+using Quiz_Programacao.Models;
 
 namespace Quiz_Programacao.Persistence
 {
     public interface IQuizRepository
     {
-        List<Pergunta> ObterPerguntas();
+        List<PerguntaViewModel> ObterPerguntas();
     }
 }

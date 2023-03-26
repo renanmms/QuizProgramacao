@@ -1,6 +1,7 @@
 using System.Data.SqlClient;
 using Dapper;
 using Quiz_Programacao.Entities;
+using Quiz_Programacao.Models;
 
 namespace Quiz_Programacao.Persistence.Repositories
 {
@@ -15,7 +16,7 @@ namespace Quiz_Programacao.Persistence.Repositories
             connectionString = _configuration.GetConnectionString("QuizProgramacao");
         }
 
-        public List<Pergunta> ObterPerguntas()
+        public List<PerguntaViewModel> ObterPerguntas()
         {
             var parametros = new DynamicParameters();
             
@@ -28,7 +29,7 @@ namespace Quiz_Programacao.Persistence.Repositories
                         quiz; 
                 ";
 
-                return db.Query<Pergunta>(sql).ToList();
+                return db.Query<PerguntaViewModel>(sql).ToList();
             }
         }
     }
