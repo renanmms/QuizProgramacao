@@ -14,9 +14,9 @@
             <h5 class="card-title">Questão @pergunta.Id</h5>
             <p class="card-text">@pergunta.Descricao</p>
             <div class="form-group">
-                @Html.CheckBox(@pergunta.Id.ToString(), (pergunta.Verdadeiro == 1) ? true : false, new { @class="form-group"})
+                @Html.CheckBox(@pergunta.Id.ToString(), (pergunta.Verdadeiro == 1) ? true : false, new { @class="form-check-input", disabled = "true"})
                 <label for="">Verdadeiro</label>
-                @Html.CheckBox(@pergunta.Id.ToString(), (pergunta.Verdadeiro == 1) ? false : true, new { @class="form-group", disabled = "true"})
+                @Html.CheckBox(@pergunta.Id.ToString(), (pergunta.Verdadeiro == 1) ? false : true, new { @class="form-check-input", disabled = "true"})
                 <label for="">Falso</label>
             </div>
         </div>
