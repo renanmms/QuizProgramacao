@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Quiz - Resultado";
+}
+@model QuizViewModel;
+
+<div class="text-center">
+    <h1 class="display-4">Solução do Quiz</h1>
+</div>
+
+@foreach (var pergunta in Model.Perguntas)
+{
+    <div class="card" style="margin: 1rem;">
+        <div class="card-body">
+            <h5 class="card-title">Questão @pergunta.Id</h5>
+            <p class="card-text">@pergunta.Descricao</p>
+            <div class="form-group">
+                @Html.CheckBox(@pergunta.Id.ToString(), (pergunta.Verdadeiro == 1) ? true : false, new { @class="form-group"})
+                <label for="">Verdadeiro</label>
+                @Html.CheckBox(@pergunta.Id.ToString(), (pergunta.Verdadeiro == 1) ? false : true, new { @class="form-group", disabled = "true"})
+                <label for="">Falso</label>
+            </div>
+        </div>
+    </div>
+}
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-info">Voltar</a>
