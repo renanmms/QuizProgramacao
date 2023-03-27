@@ -7,18 +7,24 @@
     <h1 class="display-4">Quiz de programação</h1>
 </div>
 
-@foreach (var pergunta in Model.Perguntas)
-{
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Questão @pergunta.Id</h5>
-      <p class="card-text">@pergunta.Descricao</p>
-      <div class="form-group">
-        <input type="radio" name="q1" value="true" >
-        <label for="">Verdadeiro</label>
-        <input type="radio" name="q1" value="false" />
-        <label for="">Falso</label>
+<form asp-action="Index" method="post">
+  @foreach (var pergunta in Model.Perguntas)
+  {
+    <div class="card" style="margin: 1rem;">
+      <div class="card-body">
+        <h5 class="card-title">Questão @pergunta.Id</h5>
+        <p class="card-text">@pergunta.Descricao</p>
+        <div class="form-group">
+          <input asp-for="@pergunta.Id" type="hidden" value="@pergunta.Id" />
+          <input asp-for="@pergunta.Verdadeiro" type="radio" name="@pergunta.Id" value="1" />
+          <label for="">Verdadeiro</label>
+          <input asp-for="@pergunta.Verdadeiro" type="radio" name="@pergunta.Id" value="0" />
+          <label for="">Falso</label>
+        </div>
       </div>
     </div>
-  </div>
-}
+  }
+  <input type="submit" value="Enviar" />
+</form>
+
+<a asp-controller="Home" asp-action="Respostas" class="btn btn-info">Solução</a>
