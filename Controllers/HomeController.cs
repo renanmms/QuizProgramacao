@@ -23,6 +23,12 @@ public class HomeController : Controller
         return View(quiz);
     }
 
+    public IActionResult Respostas(){
+        var quiz = new QuizViewModel();
+        quiz.Perguntas = _quizRepository.ObterRespostas();
+        return View(quiz);
+    }
+
     public IActionResult Privacy()
     {
         return View();
