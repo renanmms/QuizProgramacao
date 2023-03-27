@@ -32,5 +32,21 @@ namespace Quiz_Programacao.Persistence.Repositories
                 return db.Query<PerguntaViewModel>(sql).ToList();
             }
         }
+
+        public List<PerguntaViewModel> ObterRespostas()
+        {
+            using(var db = new SqlConnection(connectionString)){
+                var sql = @$"select
+                                r.id_pergunta as Id,
+                                r.verdadeiro as Verdadeiro,
+                                Quiz.pergunta_descricao as Descricao
+                            from
+                                Respostas r
+                            inner join 
+                                Quiz on Quiz.id_pergunta = r.id_pergunta;";
+
+                return db.Query<PerguntaViewModel>(sql).ToList();
+            }
+        }
     }
 }
